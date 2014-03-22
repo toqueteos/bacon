@@ -6,3 +6,6 @@
 *.csproj
 *.unityproj
 *.sln
+
+Standard Assets/
+Substances_Free/
