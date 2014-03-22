@@ -16,23 +16,4 @@ public class Fork : MonoBehaviour
 		transform.rotation = Quaternion.Euler(0, 0, rot);
 	}
 	
-	void Update()
-	{
-		Ray ray = new Ray(transform.position, -transform.up);
-		RaycastHit hit;
-
-		if (Physics.Raycast(ray, out hit, 1024f))
-		{
-			Vector3 to = -transform.up * hit.distance;
-			Debug.DrawRay(transform.position, to, Color.red, 5f);
-		}
-
-		// Apply gravity
-		if (hit.distance >= floorOffset)
-		{
-			Vector3 pos = transform.position;
-			pos.y -= gravity * Time.deltaTime;
-			transform.position = pos;
-		}
-	}
 }
