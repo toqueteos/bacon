@@ -36,7 +36,7 @@ public class CreatePlane : ScriptableWizard
 	static Camera cam;
 	static Camera lastUsedCam;
 	
-	[MenuItem("Terrain/Create Custom Plane...")]
+	[MenuItem("Tools/Create Custom Plane...")]
 	static void CreateWizard()
 	{
 		cam = Camera.current;
