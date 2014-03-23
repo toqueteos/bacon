@@ -5,7 +5,9 @@ public class FadeDestroy : MonoBehaviour
 {
 
 	public Transform player;
-	public float destroyDistance;
+	public float destroyDistance = 32;
+	// Don't start fading unless distance D
+	public float startFadeAfter = 8;
 	MeshRenderer mr;
 	Color c;
 	
@@ -18,8 +20,8 @@ public class FadeDestroy : MonoBehaviour
 	void Update()
 	{
 		float dist = Vector3.Distance(player.position, transform.position);
-
-		c.a = 1f - (dist / destroyDistance);
+		float alpha = Mathf.Max(0f, (dist - startFadeAfter) / destroyDistance);
+		c.a = 1f - alpha;
 		if (c.a <= 0) {
 			Destroy(gameObject);
 		} else {
