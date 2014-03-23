@@ -5,11 +5,15 @@ public class TriggerDestroy : MonoBehaviour
 {
 
 	public Transform owner;
-	public float ensureDestroyAfter = 5f;
+	public float ensureDestroyAfter = 2f;
 
 	void Update()
 	{
 		ensureDestroyAfter -= Time.deltaTime;
+
+		if (ensureDestroyAfter <= 0) {
+			Destroy(gameObject);
+		}
 	}
 
 	void OnTriggerEnter(Collider other)
