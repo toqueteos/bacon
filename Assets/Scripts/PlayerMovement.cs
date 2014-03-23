@@ -5,28 +5,20 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour
 {
 	CharacterController cc;
-	public float speed = 1f;
-
+	public float speed = 8f;
 	public float lateralSpeed = 6f;
 	public float rotationSpeed = 1f;
-
-	private float floorOffset = 0.65f;
-	private float gravity = 9.8f;
-
-	private bool onJump = false;
+	float floorOffset = 0.65f;
+	float gravity = 9.8f;
+	bool onJump = false;
 	public bool canJump = true;
-
-	public float jumpForce = 35.0f;
-
-	private float jForce;
-
+	public float jumpForce = 20.0f;
+	float jForce;
 	Quaternion defRotation;
-
 	Animator anim;
 	
 	void Start()
 	{
-
 		cc = GetComponent<CharacterController>();
 
 		anim = GetComponent<Animator>();
@@ -39,12 +31,10 @@ public class PlayerMovement : MonoBehaviour
 		defRotation = transform.rotation;
 
 		jForce = 0f;
-
 	}
 	
 	void Update()
 	{
-
 		// Start movement
 		bool slmove = Input.GetKeyDown(KeyCode.LeftArrow);
 		bool srmove = Input.GetKeyDown(KeyCode.RightArrow);
@@ -70,34 +60,34 @@ public class PlayerMovement : MonoBehaviour
 
 
 		// We reset rotation first (if triggered)
-		if(elmove||ermove)
+		if (elmove || ermove)
 		{
 			roty = 0f;
 			sp = rotationSpeed * 0.005f;
-			anim.SetBool("FrontJump",true);
+			anim.SetBool("FrontJump", true);
 		}
 
-		if(slmove||srmove)
+		if (slmove || srmove)
 		{
-			anim.SetBool("FrontJump",false);
-		}
-		else{
-			anim.SetBool("FrontJump",true);
+			anim.SetBool("FrontJump", false);
+		} else
+		{
+			anim.SetBool("FrontJump", true);
 		}
 
 		// Then we can aply the animation and a new rotation
-		if(lmove)
+		if (lmove)
 		{
 			roty = 15f;
-			if (anim.GetCurrentAnimatorStateInfo(0).IsName("LeftJump")==false)
+			if (anim.GetCurrentAnimatorStateInfo(0).IsName("LeftJump") == false)
 			{
 				anim.SetTrigger("LeftJump");
 			}
 		}
-		if(rmove)
+		if (rmove)
 		{
 			roty = -15f;
-			if (anim.GetCurrentAnimatorStateInfo(0).IsName("RightJump")==false)
+			if (anim.GetCurrentAnimatorStateInfo(0).IsName("RightJump") == false)
 			{
 				anim.SetTrigger("RightJump");
 			}
@@ -105,9 +95,7 @@ public class PlayerMovement : MonoBehaviour
 
 		// New rotation quaternion and a lerp for smoothness
 		Quaternion toRotation = Quaternion.Euler(rotx, roty, rotz);
-		transform.rotation = Quaternion.Lerp (transform.rotation, toRotation, Time.time * sp);
-
-		
+		transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, Time.time * sp);
 
 		// Temporary position vector
 		Vector3 pos = transform.position;
@@ -116,34 +104,31 @@ public class PlayerMovement : MonoBehaviour
 		pos.z += -speed * Time.deltaTime;
 
 		// Lateral movement
-		if(lmove)
+		if (lmove)
 		{
 			pos.x += -lateralSpeed * Time.deltaTime;
 		}
-		if(rmove)
+		if (rmove)
 		{
 			pos.x += lateralSpeed * Time.deltaTime;
 		}
-		
 
 		// Keep player on the rail
 		float limit = 6.5f;
 		pos.x = Mathf.Clamp(pos.x, -limit, limit);
 
-
-
 		// Jump
-		if(jump && canJump == true)
+		if (jump && canJump == true)
 		{
 			jForce = jumpForce;
 			canJump = false;
 			onJump = true;
 		}
 
-		if(onJump)
+		if (onJump)
 		{
-			jForce -=gravity * Time.deltaTime;
-			if(jForce <= 0)
+			jForce -= gravity * Time.deltaTime;
+			if (jForce <= 0)
 			{
 				jForce = 0f;
 			}
@@ -156,14 +141,12 @@ public class PlayerMovement : MonoBehaviour
 		transform.position = Vector3.Lerp(transform.position, pos, 50f * Time.deltaTime);
 
 		// Height correction
-		if(transform.position.y < floorOffset)
+		if (transform.position.y < floorOffset)
 		{
 			transform.position = new Vector3(transform.position.x, floorOffset, transform.position.z);
 			canJump = true;
 			onJump = false;
 			jForce = 0f;
 		}
-
-		//Debug.Log(pos);
 	}
 }

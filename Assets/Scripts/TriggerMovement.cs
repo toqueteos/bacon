@@ -4,18 +4,17 @@ using System.Collections;
 //[RequireComponent(typeof(CharacterController))]
 public class TriggerMovement : MonoBehaviour
 {
-
+	public FloorBuilder fb;
+	int floorOffset;
 	public Transform player;
 	// How far should the trigger be from the player
 	public float awayAtMost = 0.85f;
 	public Vector3 speed;
-	public int floorOffset = 128;
 	public float positionDelta = 0.05f;
-	
-	void OnTriggerEnter(Collider other) {
-		Vector3 pos = other.transform.position;
-		pos.z -= floorOffset;
-		other.transform.position = pos;
+
+	void Start() {
+		floorOffset = fb.qty * fb.offset;
+		transform.position = Vector3.forward * (floorOffset - fb.offset / 2);
 	}
 
 	void Update()
@@ -33,5 +32,11 @@ public class TriggerMovement : MonoBehaviour
 		speed.z = Mathf.Max(0, speed.z);
 
 		transform.position -= speed * Time.deltaTime;
+	}
+
+	void OnTriggerEnter(Collider other) {
+		Vector3 pos = other.transform.position;
+		pos.z -= floorOffset;
+		other.transform.position = pos;
 	}
 }
