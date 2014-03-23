@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Papel
-  m_Shader: {fileID: 30, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: mat_belt
+  m_Shader: {fileID: 2, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -17,38 +17,27 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: af1d80ab92cb055419f55edca78339bb, type: 3}
-          m_Scale: {x: 8, y: 8}
+          m_Texture: {fileID: 2800000, guid: 8838450d77c17f94d9d67c8b424b4059, type: 3}
+          m_Scale: {x: 1, y: 2.5}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _BumpMap
         second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Illum
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
+          m_Texture: {fileID: 2800000, guid: dfe1e252f7e52134fb0954731dcb80f5, type: 3}
+          m_Scale: {x: 1, y: 2.5}
           m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
           name: _Shininess
-        second: .699999988
-      data:
-        first:
-          name: _EmissionLM
-        second: 0
+        second: .0590917505
     m_Colors:
       data:
         first:
           name: _Color
-        second: {r: .985294104, g: .980197728, b: .963559687, a: .870588243}
+        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
           name: _SpecColor
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: .323529422, g: .323529422, b: .323529422, a: 1}
