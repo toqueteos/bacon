@@ -5,6 +5,12 @@ public class TriggerDestroy : MonoBehaviour
 {
 
 	public Transform owner;
+	public float ensureDestroyAfter = 5f;
+
+	void Update()
+	{
+		ensureDestroyAfter -= Time.deltaTime;
+	}
 
 	void OnTriggerEnter(Collider other)
 	{
