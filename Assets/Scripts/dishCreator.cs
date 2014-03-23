@@ -7,11 +7,14 @@ public class dishCreator : MonoBehaviour {
 
 	FadeDestroy fd;
 	FadeDestroy fdd;
-
+	static int nameId = 0;
+	
 	void Start()
 	{
 		fd = GetComponent<FadeDestroy>();
-
+		name = string.Format("dish{0}", nameId);
+		nameId++;	
+		
 		Vector3 pos = fd.player.position;
 
 		pos.z -= 15f;

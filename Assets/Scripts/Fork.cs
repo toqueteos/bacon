@@ -5,11 +5,17 @@ public class Fork : MonoBehaviour
 {
 
 	private Vector3 pos;
+	private Vector3 pos2;
 	private float counter; // countdown to fall
 	
-	private float timeUntilFall = 4f;
+	private float timeUntilFall = 5f;
 
 	static int nameId = 0;
+
+	private float startTime;
+	private float journeyLength;
+
+	private float speed = 1f;
 	
 	FadeDestroy fd;
 
@@ -28,6 +34,12 @@ public class Fork : MonoBehaviour
 		pos.z += 0f;
 		pos.y = 8f;
 		pos.x = Random.Range(-6.5f,6.5f);
+
+		pos2 = pos;
+		pos2.x = -6.5f + Mathf.Floor(0.5f+Random.Range(0,1))*13f;
+
+		startTime = Time.time;
+		journeyLength = Vector3.Distance(pos, pos2);
 
 		// Set position and ignore forces/torques
 		transform.position = pos;
@@ -54,9 +66,14 @@ public class Fork : MonoBehaviour
 		}
 		else
 		{
-			pos = transform.position;
-			pos.z = fd.player.transform.position.z;
-			transform.position = pos;
+			float distCovered = (Time.time - startTime) * speed;
+			float fracJourney = distCovered / journeyLength;
+
+			//pos = transform.position;
+			//pos.z = fd.player.transform.position.z;
+			//pos.x = Random.Range (-6.5f,6.5f);
+			//transform.position = pos;
+			transform.position = Vector3.Lerp(pos,pos2, fracJourney);
 		}
 	}
 

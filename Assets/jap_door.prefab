@@ -42,6 +42,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400004}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: jap_door
   m_TagString: Untagged
@@ -68,7 +69,7 @@ Transform:
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: -.707106888, y: 0, z: -0, w: .707106769}
   m_LocalPosition: {x: .674958825, y: -20, z: -.415614963}
-  m_LocalScale: {x: 8, y: 8, z: 8}
+  m_LocalScale: {x: 15, y: 15, z: 15}
   m_Children: []
   m_Father: {fileID: 400004}
 --- !u!4 &400004
@@ -159,6 +160,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f663304b71aec844a4c78b96d4ab89b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee314ea8f81deb4aa265e6b011fc657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  destroyDistance: 256
+  startFadeAfter: 128
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
