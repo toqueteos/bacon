@@ -14,7 +14,7 @@ public class Fryingpan : MonoBehaviour {
 		nameId++;	
 		pos = fd.player.transform.position;
 		pos.z -= Random.Range(26f,29f);
-		pos.y = 1f;
+		pos.y = 4f;
 		pos.x = Random.Range(-6.5f,6.5f);
 		transform.position = pos;
 	}
