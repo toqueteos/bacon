@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweenTarget: {fileID: 682602048}
-  hover: {r: 1, g: 1, b: 1, a: 1}
+  hover: {r: 1, g: .775086522, b: .713235259, a: 1}
   pressed: {r: 1, g: 1, b: 0, a: 1}
   disabledColor: {r: .5, g: .5, b: .5, a: 1}
   duration: .200000003
@@ -154,7 +154,7 @@ MonoBehaviour:
   hideIfOffScreen: 0
   keepAspectRatio: 1
   aspectRatio: 1.67364013
-  mSprite: {fileID: 21300000, guid: 3cba68dfce155b548822ead26aac7034, type: 3}
+  mSprite: {fileID: 21300000, guid: 14544c39335b80640bb7e9dcd83c7a3a, type: 3}
   mMat: {fileID: 0}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   nextSprite: {fileID: 0}
@@ -180,7 +180,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 392, y: 100, z: 0}
-  m_Center: {x: 0, y: -5, z: 0}
+  m_Center: {x: 0, y: 20, z: 0}
 --- !u!1 &1000959280
 GameObject:
   m_ObjectHideFlags: 0
