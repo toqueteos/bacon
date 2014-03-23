@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
 	bool onJump = false;
 	public bool canJump = true;
 	public float jumpForce = 20.0f;
+	public AudioSource jumpSound;
 	float jForce;
 	Quaternion defRotation;
 	Animator anim;
@@ -123,6 +124,8 @@ public class PlayerMovement : MonoBehaviour
 			jForce = jumpForce;
 			canJump = false;
 			onJump = true;
+
+			jumpSound.Play();
 		}
 
 		if (onJump)

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class dishCreator : MonoBehaviour {
+public class DishCreator : MonoBehaviour {
 
 	public GameObject[] props;
 

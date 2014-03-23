@@ -4,6 +4,7 @@ using System.Collections;
 public class EnemyGenerator : MonoBehaviour
 {
 
+	public int numPropsSpawned = 0;
 	public GameObject[] props;
 	public Transform player;
 	public Vector2 timeOffset;
@@ -30,6 +31,8 @@ public class EnemyGenerator : MonoBehaviour
 			fd.player = player;
 
 			counter = Random.Range(timeOffset.x, timeOffset.y);
+
+			numPropsSpawned++;
 		}
 	}
 }

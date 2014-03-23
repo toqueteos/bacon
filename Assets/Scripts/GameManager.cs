@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
 	public float fillRate = 0.05f;
 	public float hurryUpStart = 0.75f;
 	public float hurryUpAnimationSpeed = 3.5f;
-	bool hurryUp = false;
 	public ColorChanger flashyBackground;
 
 	void Start()
@@ -38,6 +37,14 @@ public class GameManager : MonoBehaviour
 
 		if (hurry) {
 			flashyBackground.SetAnimationSpeed(hurryUpAnimationSpeed);
+		}
+
+		if (hunger.value <= 0f) {
+			Application.LoadLevel("GameOver");
+		}
+
+		if (hunger.value >= 1f) {
+			Application.LoadLevel("NextLevel");
 		}
 	}
 }
