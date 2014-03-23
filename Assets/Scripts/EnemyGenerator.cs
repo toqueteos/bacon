@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ObstacleGenerator : MonoBehaviour
+public class EnemyGenerator : MonoBehaviour
 {
 
 	public GameObject[] props;
