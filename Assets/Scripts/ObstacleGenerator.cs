@@ -8,32 +8,31 @@ public class ObstacleGenerator : MonoBehaviour
 	// neutral 5-8
 	// powerups 9-INFINITY
 	public GameObject[] props;
-
 	public Transform player;
-
 	public Vector2 timeOffset;
 	private float counter;
 
 	void Start()
 	{
-		counter = Random.Range(timeOffset.x,timeOffset.y);
+		counter = Random.Range(timeOffset.x, timeOffset.y);
 	}
 
 	void Update()
 	{
 		counter -= Time.deltaTime;
-		if(counter<=0){
 
+		if (counter <= 0)
+		{
 			// Random prefab
 			int i = Random.Range(0, props.Length);
-			GameObject go = Instantiate(props[i]) as GameObject;
+			GameObject go = Instantiate(props [i]) as GameObject;
 			go.transform.parent = transform;
 			go.transform.position = player.position;
 
 			FadeDestroy fd = go.GetComponent<FadeDestroy>();
 			fd.player = player;
 
-			counter = Random.Range(timeOffset.x,timeOffset.y);
+			counter = Random.Range(timeOffset.x, timeOffset.y);
 		}
 	}
 }
