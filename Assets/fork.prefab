@@ -40,9 +40,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400004}
-  - 114: {fileID: 11400000}
   - 54: {fileID: 5400000}
   - 65: {fileID: 6500000}
+  - 114: {fileID: 11400000}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: fork
   m_TagString: Untagged
@@ -97,7 +98,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: -515894094, guid: 96812fda5aa368541b266edf69332979, type: 3}
+  - {fileID: 2100000, guid: 721ac1766f5b9ba478d5877fc5513b7f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -152,7 +153,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sidewaysRotation: {x: -15, y: 15}
-  floorOffset: .100000001
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee314ea8f81deb4aa265e6b011fc657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  destroyDistance: 32
+  startFadeAfter: 8
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

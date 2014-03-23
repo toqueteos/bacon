@@ -28,6 +28,7 @@ GameObject:
   - 108: {fileID: 10800000}
   - 114: {fileID: 11400000}
   - 65: {fileID: 6500000}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: lamp_floor
   m_TagString: Untagged
@@ -145,6 +146,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de3b5e7f133c7494dac72368605d2971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawn: {x: 24, y: -4, z: -24}
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee314ea8f81deb4aa265e6b011fc657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  destroyDistance: 128
+  startFadeAfter: 64
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
