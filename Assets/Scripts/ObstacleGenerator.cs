@@ -30,6 +30,9 @@ public class ObstacleGenerator : MonoBehaviour
 			go.transform.parent = transform;
 			go.transform.position = player.position;
 
+			FadeDestroy fd = go.GetComponent<FadeDestroy>();
+			fd.player = player;
+
 			counter = Random.Range(timeOffset.x,timeOffset.y);
 		}
 	}
