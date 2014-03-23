@@ -2,10 +2,11 @@
 [Tt]emp/
 [Oo]bj/
 Builds/
+Build/
 
-Standard Assets*
-Substances_Free*
-NGUI*
+Standard Assets/
+Substances_Free/
+NGUI/
 
 *.userprefs
 
