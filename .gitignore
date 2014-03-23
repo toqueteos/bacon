@@ -3,8 +3,9 @@
 [Oo]bj/
 Builds/
 
-Standard Assets/
-Substances_Free/
+Standard Assets*
+Substances_Free*
+NGUI*
 
 *.userprefs
 
