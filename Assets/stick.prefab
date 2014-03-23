@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83e0f1c08cd917408981d7ed1c90d3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawn: {x: 0, y: 24, z: -16}
+  spawn: {x: 0, y: 24, z: 16}
   randomX: {x: -7, y: 7}
   shadow: {fileID: 100000, guid: 47a8e0414e338a447b6c7adaf4a9513e, type: 2}
 --- !u!114 &11400002
