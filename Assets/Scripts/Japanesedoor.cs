@@ -18,12 +18,10 @@ public class JapaneseDoor : MonoBehaviour {
 		pos.x = -35f + Mathf.Floor(Random.value+0.5f)*70f;
 
 		// Handle rotation
-		float dir = 1f;
 		float ry = 0;
 		if(pos.x>0)
 		{
 			ry = 180f;
-			dir = -1f;
 		}
 		transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, ry, transform.rotation.eulerAngles.z);
 

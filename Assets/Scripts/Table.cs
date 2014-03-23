@@ -15,7 +15,7 @@ public class Table : MonoBehaviour {
 		pos = fd.player.transform.position;
 		pos.z -= 24f;
 		pos.y = 0f;
-		pos.x = Mathf.Floor(Random.value+0.5f)*70f;
+		pos.x = Mathf.Floor(Random.value+0.5f)*120f;
 		transform.position = pos;
 	}
 }
