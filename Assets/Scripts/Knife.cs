@@ -4,7 +4,6 @@ using System.Collections;
 public class Knife : MonoBehaviour {
 
 	private Vector3 pos;
-	private Quaternion rot;
 	private float counter; // countdown to fall
 
 	private float timeUntilFall = 1f;
@@ -12,10 +11,14 @@ public class Knife : MonoBehaviour {
 
 	static int nameId = 0;
 
+	private bool bump;
+
 	FadeDestroy fd;
 
 	// Use this for initialization
 	void Start () {
+
+		bump = false;
 
 		fd = GetComponent<FadeDestroy>();
 
@@ -25,13 +28,11 @@ public class Knife : MonoBehaviour {
 		nameId++;
 
 		pos = fd.player.transform.position;
-
 		pos.z -= 4f;
-		pos.y = 4f;
+		pos.y = 5.5f;
 		pos.x = -6.5f + Mathf.Floor(Random.value+0.5f)*13f;
 
 		// Handle rotation
-		rot = transform.rotation;
 		float dir = 1f;
 		float ry = 0;
 		if(pos.x>=0)
@@ -60,18 +61,31 @@ public class Knife : MonoBehaviour {
 		{
 			if(transform.position.y<=0)
 			{
-				transform.rigidbody.useGravity = false;
+				if(!bump)
+				{
+					transform.rigidbody.useGravity = false;
+					transform.rigidbody.constraints = RigidbodyConstraints.FreezePosition;
+				}
 			}
 			else
 			{
-				float dir = 1f;
-				if(transform.position.x>0)
+				if(bump)
 				{
-					dir = -1f;
+					transform.rigidbody.constraints = RigidbodyConstraints.None;
+					transform.rigidbody.useGravity = true;
+					transform.rigidbody.detectCollisions = true;
 				}
-				transform.rigidbody.useGravity = true;
-				transform.rigidbody.AddForce(Vector3.down * 100);
-				transform.rigidbody.AddTorque(Vector3.back * 80 * dir);
+				else
+				{
+					float dir = 1f;
+					if(transform.position.x>0)
+					{
+						dir = -1f;
+					}
+					transform.rigidbody.useGravity = true;
+					transform.rigidbody.AddForce(Vector3.down * 500);
+					transform.rigidbody.AddTorque(Vector3.back * 80 * dir);
+				}
 			}
 		}
 		else
@@ -79,14 +93,18 @@ public class Knife : MonoBehaviour {
 			pos = transform.position;
 			pos.z = fd.player.transform.position.z + distanceToPlayer;
 			transform.position = pos;
+			distanceToPlayer += 5f*Time.deltaTime;
+			if(distanceToPlayer>0f)
+			{
+				distanceToPlayer = 0f;
+			}
 		}
 	}
 
 	void OnCollisionEnter(Collision collision) {
-		transform.rigidbody.useGravity = false;
-		transform.rigidbody.detectCollisions = false;
-		transform.rigidbody.freezeRotation = true;
-		transform.rigidbody.drag = 2000;
-		enabled = false;
+		if(transform.position.y>0)
+		{
+			bump = true;
+		}
 	}
 }
