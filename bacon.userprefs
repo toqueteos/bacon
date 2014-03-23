@@ -1,20 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Yakisoba.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerMovement.cs">
     <Files>
-      <File FileName="Assets\Scripts\ObstacleGenerator.cs" Line="8" Column="26" />
-      <File FileName="Assets\Scripts\PlayerMovement.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Fork.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\TriggerMovement.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\dishCreator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\DishTable.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Fryingpan.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Yakisoba.cs" Line="16" Column="27" />
-      <File FileName="Assets\Scripts\Wakame.cs" Line="20" Column="3" />
-      <File FileName="Assets\Scripts\JapaneseDoor.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\LampFloor.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Wok.cs" Line="17" Column="12" />
-      <File FileName="Assets\Scripts\Bowl.cs" Line="19" Column="28" />
+      <File FileName="Assets\Scripts\PlayerMovement.cs" Line="28" Column="64" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

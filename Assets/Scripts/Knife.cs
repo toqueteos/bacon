@@ -6,7 +6,7 @@ public class Knife : MonoBehaviour {
 	private Vector3 pos;
 	private float counter; // countdown to fall
 
-	private float timeUntilFall = 1f;
+	private float timeUntilFall = 2f;
 	private float distanceToPlayer;
 
 	static int nameId = 0;
@@ -83,7 +83,7 @@ public class Knife : MonoBehaviour {
 						dir = -1f;
 					}
 					transform.rigidbody.useGravity = true;
-					transform.rigidbody.AddForce(Vector3.down * 500);
+					transform.rigidbody.AddForce(Vector3.down * 700);
 					transform.rigidbody.AddTorque(Vector3.back * 80 * dir);
 				}
 			}
