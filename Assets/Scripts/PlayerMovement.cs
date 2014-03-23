@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
 		defRotation = transform.rotation;
 
-		jForce = jumpForce;
+		jForce = 0f;
 
 	}
 	
