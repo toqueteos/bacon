@@ -889,7 +889,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5fb791091ca9a6e40af128f96ac71173, type: 3}
   - {fileID: 21300000, guid: 4f5f8184b0aa96e4792f29788452070c, type: 3}
   hidePosition: {x: 931, y: 141, z: 0}
-  showPosition: {x: 675, y: 141, z: 0}
+  showPosition: {x: 400, y: 141, z: 0}
   showEvery: 5
   fadeAfter: 2
   tweenDuration: 1
@@ -980,7 +980,7 @@ MonoBehaviour:
   thumb: {fileID: 0}
   mBG: {fileID: 1083662613}
   mFG: {fileID: 1859525668}
-  mValue: .0250000004
+  mValue: .699999988
   mFill: 0
   numberOfSteps: 0
   onChange: []
@@ -1697,7 +1697,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: b8fbd012881119641ab468e4442c50d5, type: 2}
       propertyPath: mValue
-      value: .0250000004
+      value: .699999988
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b8fbd012881119641ab468e4442c50d5, type: 2}

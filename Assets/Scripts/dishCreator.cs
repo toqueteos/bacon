@@ -24,8 +24,8 @@ public class DishCreator : MonoBehaviour {
 		transform.position = pos;
 
 		Vector3 pp = Vector3.zero;
-		// 3 random foods over the dish
-		for (int i = 0; i < 3; i++) {
+		// 2 random foods over the dish
+		for (int i = 0; i < 2; i++) {
 			int j = Random.Range(0, props.Length);
 			GameObject go = Instantiate(props [j]) as GameObject;
 

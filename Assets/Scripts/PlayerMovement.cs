@@ -5,6 +5,7 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour
 {
 	CharacterController cc;
+
 	public float speed = 8f;
 	public float lateralSpeed = 6f;
 	public float rotationSpeed = 1f;
@@ -27,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
 	void Start()
 	{
 		cc = GetComponent<CharacterController>();
-		
+				
 		anim = GetComponent<Animator>();
 		
 		if (cc == null)
@@ -124,6 +125,7 @@ public class PlayerMovement : MonoBehaviour
 				break;
 			case "Enemy":
 				Debug.Log (string.Format("Got hit by {0}", hit.transform.name));
+				GameManager.instance.AddHunger(-0.025f);
 				hitSound.Play();
 				break;
 		
