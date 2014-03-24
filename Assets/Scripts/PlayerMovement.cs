@@ -12,11 +12,14 @@ public class PlayerMovement : MonoBehaviour
 	
 	public float gravity = 9.8f;
 	public float jumpForce = 8.0f;
+	public bool onJump = false;
+
+	public float pushPower = 2.0f;
 	
 	public Vector3 moveDirection = Vector3.zero;
-	private Vector3 moveInertia = Vector3.zero;
 	
 	public AudioSource jumpSound;
+	public AudioSource hitSound;
 	
 	Quaternion defRotation;
 	Animator anim;
@@ -38,50 +41,37 @@ public class PlayerMovement : MonoBehaviour
 	
 	void Update()
 	{
-		
-		// Start movement
-		bool slmove = Input.GetKeyDown(KeyCode.LeftArrow);
-		bool srmove = Input.GetKeyDown(KeyCode.RightArrow);
-		// While moving
-		bool lmove = Input.GetKey(KeyCode.LeftArrow);
-		bool rmove = Input.GetKey(KeyCode.RightArrow);
-		// End movement
-		bool elmove = Input.GetKeyUp(KeyCode.LeftArrow);
-		bool ermove = Input.GetKeyUp(KeyCode.RightArrow);
-		// Start jump
-		bool jump = Input.GetKey(KeyCode.Space);
-		
+
 		// Default rotation (facing camera)
 		float rotx = defRotation.eulerAngles.x;
 		float roty = defRotation.eulerAngles.y;
 		float rotz = defRotation.eulerAngles.z;
-		
-		// We reset rotation first (if triggered)
-		if (elmove || ermove)
+
+		// Start jump
+		bool jump = (Input.GetAxis("Vertical")>0); //Input.GetKey(KeyCode.Space);
+				
+		if (Input.GetAxis("Horizontal")==0f)
 		{
 			roty = 0f;
-		}
-		
-		anim.SetBool("FrontJump", true);
-		if (slmove || srmove)
-		{
-			anim.SetBool("FrontJump", false);
+			anim.SetBool("FrontJump", true);
 		}
 		
 		// Then we can aply the animation and a new rotation
-		if (lmove)
+		if (Input.GetAxis("Horizontal")<0f)
 		{
 			roty = lateralRotation;
 			if (!anim.GetCurrentAnimatorStateInfo(0).IsName("LeftJump"))
 			{
+				anim.SetBool("FrontJump", false);
 				anim.SetTrigger("LeftJump");
 			}
 		}
-		if (rmove)
+		if (Input.GetAxis("Horizontal")>0f)
 		{
 			roty = -lateralRotation;
 			if (!anim.GetCurrentAnimatorStateInfo(0).IsName("RightJump"))
 			{
+				anim.SetBool("FrontJump", false);
 				anim.SetTrigger("RightJump");
 			}
 		}
@@ -105,11 +95,19 @@ public class PlayerMovement : MonoBehaviour
 				jumpSound.Play();
 				moveDirection.y = jumpForce;
 				Debug.Log ("Started jump");
+				onJump = true;
 			}
 		}
-		else // JUMPING!
+		else
 		{
-			moveDirection.y = Mathf.Sin (-180f+2f*Time.time)* jumpForce;
+			if(onJump)
+			{
+				moveDirection.y = Mathf.Sin (-180f+2f*Time.time)* jumpForce; // perfect semi-circumference arc
+				if(Mathf.Sin (-180f+2f*Time.time)<0) // finished the semi-circumference arc
+				{
+					onJump = false;
+				}
+			}
 		}
 		
 		// Apply transform
@@ -117,4 +115,36 @@ public class PlayerMovement : MonoBehaviour
 		cc.Move(moveDirection * Time.deltaTime);
 		
 	}
+
+	void OnControllerColliderHit(ControllerColliderHit hit){
+
+		switch (hit.transform.tag) {
+			case "Floor":
+				onJump = false;
+				break;
+			case "Enemy":
+				Debug.Log (string.Format("Got hit by {0}", hit.transform.name));
+				hitSound.Play();
+				break;
+		
+			default: // Any other object gets pushed away
+				/*
+
+				Rigidbody body = hit.collider.attachedRigidbody;
+				if (body == null || body.isKinematic)
+					return;
+				
+				if (hit.moveDirection.y < -0.3F)
+					return;
+
+				Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+				body.velocity = pushDir * pushPower;
+
+
+				*/
+				break;
+		}
+	}
+
+	
 }

@@ -7,9 +7,12 @@ public class Lamp : MonoBehaviour {
 	public bool flicker = true;
 	public Vector2 flickerRange;
 	static bool swapSide = false;
+	static int nameId = 0;
 
 	void Start ()
 	{
+		name = string.Format("lamptokio{0}", nameId);
+		nameId++;
 		if (swapSide) {
 			spawn.x = -spawn.x;
 		}

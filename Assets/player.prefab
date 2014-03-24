@@ -407,11 +407,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: add9d2fa44731e849bc4d745e34e4c83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
-  lateralSpeed: 6
+  speed: 16
+  lateralSpeed: 12
   rotationSpeed: 1
-  canJump: 1
+  lateralRotation: 15
+  gravity: 80
   jumpForce: 20
+  onJump: 0
+  pushPower: 2
+  moveDirection: {x: 0, y: 0, z: 0}
+  jumpSound: {fileID: 0}
+  hitSound: {fileID: 0}
 --- !u!137 &13700000
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -503,12 +509,12 @@ CharacterController:
   m_GameObject: {fileID: 100024}
   serializedVersion: 2
   m_Height: 2
-  m_Radius: .980000019
+  m_Radius: 1.89999998
   m_SlopeLimit: 45
   m_StepOffset: .300000012
   m_SkinWidth: .0799999982
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 1.04999995, z: 0}
+  m_Center: {x: 0, y: .779999971, z: .860000014}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

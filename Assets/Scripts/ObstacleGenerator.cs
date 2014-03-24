@@ -16,20 +16,23 @@ public class ObstacleGenerator : MonoBehaviour
 
 	void Update()
 	{
-		counter -= Time.deltaTime;
-
-		if (counter <= 0)
+		if(props.Length>0)
 		{
-			// Random prefab
-			int i = Random.Range(0, props.Length);
-			GameObject go = Instantiate(props [i]) as GameObject;
-			go.transform.parent = transform;
-			go.transform.position = player.position;
+			counter -= Time.deltaTime;
 
-			FadeDestroy fd = go.GetComponent<FadeDestroy>();
-			fd.player = player;
+			if (counter <= 0)
+			{
+				// Random prefab
+				int i = Random.Range(0, props.Length);
+				GameObject go = Instantiate(props [i]) as GameObject;
+				go.transform.parent = transform;
+				go.transform.position = player.position;
 
-			counter = Random.Range(timeOffset.x, timeOffset.y);
+				FadeDestroy fd = go.GetComponent<FadeDestroy>();
+				fd.player = player;
+
+				counter = Random.Range(timeOffset.x, timeOffset.y);
+			}
 		}
 	}
 }

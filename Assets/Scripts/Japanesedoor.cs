@@ -3,6 +3,8 @@ using System.Collections;
 
 public class JapaneseDoor : MonoBehaviour {
 
+	public float distance;
+
 	private Vector3 pos;
 	FadeDestroy fd;
 	static int nameId = 0;
@@ -15,7 +17,7 @@ public class JapaneseDoor : MonoBehaviour {
 		pos = fd.player.transform.position;
 		pos.z -= 24f;
 		pos.y = 0f;
-		pos.x = -35f + Mathf.Floor(Random.value+0.5f)*70f;
+		pos.x = -distance + Mathf.Floor(Random.value+0.5f)*distance*2f;
 
 		// Handle rotation
 		float ry = 0;
@@ -26,5 +28,7 @@ public class JapaneseDoor : MonoBehaviour {
 		transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, ry, transform.rotation.eulerAngles.z);
 
 		transform.position = pos;
+
+		Debug.Log (pos);
 	}
 }
