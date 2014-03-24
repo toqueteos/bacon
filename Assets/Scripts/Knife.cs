@@ -13,6 +13,8 @@ public class Knife : MonoBehaviour {
 
 	private bool bump;
 
+	private bool startedFalling = false;
+
 	FadeDestroy fd;
 
 	// Use this for initialization
@@ -26,6 +28,8 @@ public class Knife : MonoBehaviour {
 
 		name = string.Format("knife{0}", nameId);
 		nameId++;
+
+		transform.tag = "Untagged"; // not an enemy until it starts falling
 
 		pos = fd.player.transform.position;
 		pos.z -= 4f;
@@ -59,6 +63,11 @@ public class Knife : MonoBehaviour {
 		counter -= Time.deltaTime;
 		if(counter<=0)
 		{
+			if(!startedFalling)
+			{
+				startedFalling = true;
+				transform.tag = "Enemy";
+			}
 			if(transform.position.y<=0)
 			{
 				if(!bump)

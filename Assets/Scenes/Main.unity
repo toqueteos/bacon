@@ -796,7 +796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floorBelt: {fileID: 400000, guid: fb3453ddcca56f5469184cbab57024ab, type: 2}
-  offset: 32
+  beltSize: 32
   qty: 16
 --- !u!1 &870916812
 GameObject:
@@ -860,7 +860,7 @@ MonoBehaviour:
   - {fileID: 100004, guid: 201748173c10aee42b36799f884ee787, type: 2}
   - {fileID: 100002, guid: 8b7f93c5234b06747adb3e06f52d925c, type: 2}
   player: {fileID: 1720365407}
-  timeOffset: {x: 1, y: 4}
+  timeOffset: {x: 2, y: 5}
 --- !u!4 &990752014
 Transform:
   m_ObjectHideFlags: 0
@@ -888,8 +888,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3b28dca84d1103f4bbada31213957a74, type: 3}
   - {fileID: 21300000, guid: 5fb791091ca9a6e40af128f96ac71173, type: 3}
   - {fileID: 21300000, guid: 4f5f8184b0aa96e4792f29788452070c, type: 3}
-  hidePosition: {x: 931, y: 141, z: 0}
-  showPosition: {x: 400, y: 141, z: 0}
+  hidePosition: {x: 768, y: 141, z: 0}
+  showPosition: {x: 512, y: 141, z: 0}
   showEvery: 5
   fadeAfter: 2
   tweenDuration: 1
@@ -980,7 +980,7 @@ MonoBehaviour:
   thumb: {fileID: 0}
   mBG: {fileID: 1083662613}
   mFG: {fileID: 1859525668}
-  mValue: .699999988
+  mValue: .5
   mFill: 0
   numberOfSteps: 0
   onChange: []
@@ -1120,6 +1120,10 @@ Prefab:
     - target: {fileID: 11400002, guid: f3a410e57140b0b4aab2232e09504304, type: 2}
       propertyPath: jumpForce
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: f3a410e57140b0b4aab2232e09504304, type: 2}
+      propertyPath: jumpTime
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3a410e57140b0b4aab2232e09504304, type: 2}
@@ -1402,7 +1406,15 @@ Prefab:
       objectReference: {fileID: 1720365407}
     - target: {fileID: 11400000, guid: 24be18c9cab95b4448613851d29a0d14, type: 2}
       propertyPath: awayAtMost
-      value: .899999976
+      value: .699999988
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 24be18c9cab95b4448613851d29a0d14, type: 2}
+      propertyPath: speed.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 24be18c9cab95b4448613851d29a0d14, type: 2}
+      propertyPath: positionDelta
+      value: .25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 24be18c9cab95b4448613851d29a0d14, type: 2}
@@ -1473,7 +1485,7 @@ MonoBehaviour:
   - {fileID: 100002, guid: 34278b27b62c406439c2dbd8fddfb2c9, type: 2}
   - {fileID: 100056, guid: 8894d4339590d994dbd090552cd5cf2b, type: 2}
   player: {fileID: 1720365407}
-  timeOffset: {x: .5, y: 1}
+  timeOffset: {x: 4, y: 8}
 --- !u!1 &1556058385
 GameObject:
   m_ObjectHideFlags: 0
@@ -1697,7 +1709,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: b8fbd012881119641ab468e4442c50d5, type: 2}
       propertyPath: mValue
-      value: .699999988
+      value: .5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b8fbd012881119641ab468e4442c50d5, type: 2}
@@ -1799,6 +1811,7 @@ GameObject:
   - 143: {fileID: 1720365406}
   - 114: {fileID: 1720365408}
   - 95: {fileID: 1720365409}
+  - 114: {fileID: 1720365410}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -1849,6 +1862,7 @@ MonoBehaviour:
   lateralSpeed: 12
   rotationSpeed: 1
   lateralRotation: 15
+  jumpTime: 2
   gravity: 1000
   jumpForce: 50
   onJump: 0
@@ -1871,6 +1885,18 @@ Animator:
   m_ApplyRootMotion: 0
   m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
+--- !u!114 &1720365410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1720365405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aab7945eb6863245967cfa13a800a8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitSound: {fileID: 1556058387}
 --- !u!1 &1802394714
 GameObject:
   m_ObjectHideFlags: 0
@@ -1972,9 +1998,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fb: {fileID: 835569097}
   player: {fileID: 1720365407}
-  awayAtMost: .899999976
-  speed: {x: 0, y: 0, z: 6}
-  positionDelta: .0500000007
+  awayAtMost: .699999988
+  speed: {x: 0, y: 0, z: 10}
+  positionDelta: .25
 --- !u!65 &1831830000
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -13,8 +13,8 @@ public class TriggerMovement : MonoBehaviour
 	public float positionDelta = 0.05f;
 
 	void Start() {
-		floorOffset = fb.qty * fb.offset;
-		transform.position = Vector3.forward * (floorOffset - fb.offset / 2);
+		floorOffset = fb.qty * fb.beltSize;
+		transform.position = Vector3.forward * (floorOffset - (fb.beltSize / 2));
 	}
 
 	void Update()

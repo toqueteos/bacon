@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
 	public float lateralSpeed = 6f;
 	public float rotationSpeed = 1f;
 	public float lateralRotation = 15f;
+
+	public float jumpTime = 2f;
 	
 	public float gravity = 9.8f;
 	public float jumpForce = 8.0f;
@@ -21,6 +23,9 @@ public class PlayerMovement : MonoBehaviour
 	
 	public AudioSource jumpSound;
 	public AudioSource hitSound;
+
+	private float startTime;
+	private float t;
 	
 	Quaternion defRotation;
 	Animator anim;
@@ -95,16 +100,18 @@ public class PlayerMovement : MonoBehaviour
 			{
 				jumpSound.Play();
 				moveDirection.y = jumpForce;
-				Debug.Log ("Started jump");
+				//Debug.Log ("Started jump");
 				onJump = true;
+				startTime = Time.time;
 			}
 		}
 		else
 		{
 			if(onJump)
 			{
-				moveDirection.y = Mathf.Sin (-180f+2f*Time.time)* jumpForce; // perfect semi-circumference arc
-				if(Mathf.Sin (-180f+2f*Time.time)<0) // finished the semi-circumference arc
+				t = Time.time - startTime;
+				moveDirection.y = Mathf.Sin(-180f+(1f/(jumpTime+0.01f))*t)* jumpForce; // perfect semi-circumference arc from -180º to 0º
+				if(Mathf.Sin (-180f+2f*t)<0) // finished the semi-circumference arc
 				{
 					onJump = false;
 				}
@@ -121,12 +128,10 @@ public class PlayerMovement : MonoBehaviour
 
 		switch (hit.transform.tag) {
 			case "Floor":
-				onJump = false;
-				break;
-			case "Enemy":
-				Debug.Log (string.Format("Got hit by {0}", hit.transform.name));
-				GameManager.instance.AddHunger(-0.025f);
-				hitSound.Play();
+				//if(onJump&&())
+				//{
+					onJump = false;
+				//}
 				break;
 		
 			default: // Any other object gets pushed away

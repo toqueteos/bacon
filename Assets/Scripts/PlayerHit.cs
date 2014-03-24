@@ -1,13 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerHit : MonoBehaviour {
+public class PlayerHit : MonoBehaviour
+{
+	public AudioSource hitSound;
 
-	public AudioSource boo;
-
-	void OnCollisionEnter(Collision collision) {
-		GameManager.instance.AddHunger(-0.1f);
-		Debug.Log(string.Format("Hit {0}", collision.transform.name));
-		boo.Play();
+	void OnControllerColliderHit(ControllerColliderHit hit)
+	{
+		if (hit.transform.tag == "Enemy")
+		{
+			Debug.Log(string.Format("Got hit by {0}", hit.transform.name));
+						
+			// Enemies are ignored for collisions once hit
+			hit.transform.tag = "Untagged";
+						
+			// Gameplay response
+			GameManager.instance.AddHunger(-0.1f);
+			hitSound.Play();
+		}
 	}
 }
