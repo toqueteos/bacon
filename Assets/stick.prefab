@@ -32,7 +32,7 @@ GameObject:
   - 114: {fileID: 11400004}
   m_Layer: 0
   m_Name: stick
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,8 +126,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83e0f1c08cd917408981d7ed1c90d3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawn: {x: 0, y: 24, z: 16}
+  spawn: {x: 0, y: 24, z: 0}
   randomX: {x: -7, y: 7}
+  randomZ: {x: 7, y: 12}
   shadow: {fileID: 100000, guid: 47a8e0414e338a447b6c7adaf4a9513e, type: 2}
 --- !u!114 &11400002
 MonoBehaviour:
@@ -154,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccd35b2e8ab47824b99c845b6e9f8a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 9.80000019
+  force: 500
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

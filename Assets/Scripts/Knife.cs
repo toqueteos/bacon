@@ -33,7 +33,7 @@ public class Knife : MonoBehaviour {
 
 		pos = fd.player.transform.position;
 		pos.z -= 4f;
-		pos.y = 5.5f;
+		pos.y = 6.5f;
 		pos.x = -6.5f + Mathf.Floor(Random.value+0.5f)*13f;
 
 		// Handle rotation

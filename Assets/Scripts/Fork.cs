@@ -4,8 +4,9 @@ using System.Collections;
 public class Fork : MonoBehaviour
 {
 
+	public Vector3 spawn;
+
 	private Vector3 pos;
-	private Vector3 pos2;
 	private float counter; // countdown to fall
 	
 	private float timeUntilFall = 5f;
@@ -31,15 +32,9 @@ public class Fork : MonoBehaviour
 		nameId++;
 		
 		pos = fd.player.transform.position;
-		pos.z += 0f;
-		pos.y = 8f;
+		pos.z += spawn.z;//0f;
+		pos.y += spawn.y;//8f;
 		pos.x = Random.Range(-6.5f,6.5f);
-
-		pos2 = pos;
-		pos2.x = -6.5f + Mathf.Floor(0.5f+Random.Range(0,1))*13f;
-
-		startTime = Time.time;
-		journeyLength = Vector3.Distance(pos, pos2);
 
 		// Set position and ignore forces/torques
 		transform.position = pos;
@@ -66,14 +61,7 @@ public class Fork : MonoBehaviour
 		}
 		else
 		{
-			float distCovered = (Time.time - startTime) * speed;
-			float fracJourney = distCovered / journeyLength;
-
-			//pos = transform.position;
-			//pos.z = fd.player.transform.position.z;
-			//pos.x = Random.Range (-6.5f,6.5f);
-			//transform.position = pos;
-			transform.position = Vector3.Lerp(pos,pos2, fracJourney);
+			transform.position = new Vector3(pos.x,pos.y,fd.player.transform.position.z);
 		}
 	}
 
